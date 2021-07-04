@@ -3,7 +3,6 @@ const path = require('path')
 const users = require('./user') // ไปนำไฟล์ user
 const app = express()
 
-
 app.get('/' , (req,res) => {
     // res.send('Hello world') ส่งข้อมูล string
     res.sendFile(path.join(__dirname, 'public' , 'main.html'))
