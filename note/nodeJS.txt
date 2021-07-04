@@ -1,0 +1,22 @@
+Node.js คือ Cross Platform Runtime Environment 
+สำหรับฝั่ง Server และเป็น Open Source ซึ่งเขียนด้วยภาษา 
+JavaScript
+
+NodeJS ==> Platform ที่เขียนด้วย JavaScript สำหรับเป็น Web Server
+
+Blockign I/O ==> Server สามารถทำงานพร้อมกันให้กับหลายคนได้
+แต่หากมีการขอข้อมูชจากแหล่งๆเดียวซ้ำๆ จำทำให้เกิดปัญหาได้
+
+Non-blocking I/O ==> Server ทำงานโดยไม่ยึดติดกับแหล่งข้อมูล
+โดยการใช้ Async, Await
+
+event loop => รอบในการประมวลผล ทำงานในรูปแบบ asyn
+https://www.google.com/search?q=%E0%B8%B7node+js+life+cycle&rlz=1C1FKPE_thTH927TH927&sxsrf=ALeKk038Jq_X2pIaPtQBN36xei-51--oQQ:1625107912590&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjAsOfe7sDxAhVoyzgGHY1mDIQQ_AUoAXoECAEQAw&biw=767&bih=655&dpr=1.25#imgrc=Bt6Mr8nhNad3NM
+
+โดย event loop จะมี user ที่ต้องการดึงข้อมูลไปใช้จำนวนมาก
+Server มีการเตรียม limit thread pool (นำ request ของ user มากองรวมไว้)
+มีการใช้ event queue เพื่อเรียงลำดับของ request จากนั้น event loop จะตรวจสอบและประมวลผล request
+โดย event loop จะทำงานวนซ้ำไปเรื่อยๆ เพื่อดูว่ายังมี queue อีกหรือไม่
+ถ้ามีส่งต่อให้ที่ non-blocking I/O(ประมวลผลและส่งกลับไปยัง user),blocking I/O
+โดยถ้าเป็น blocking I/O จะทำการเช็คใน thread pool ว่ายังมีอยู่หรือไม่
+หากมีจะนำมาทำงานและส่งค่ากลับไปยัง event loop แล้ว event loop ก็จะส่งกลับไปให้ผู้ใช้

@@ -1,0 +1,1 @@
+ทำงานโดยใช้ nodejs ==> จัดการกับ response & request ได้ดี

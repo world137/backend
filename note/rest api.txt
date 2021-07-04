@@ -1,0 +1,38 @@
+REST ย่อมาจาก Representational State Transfer
+เป็นรูปแบบการส่งข้อมูลระหว่าง server กับ user ซึ่งสามารถส่งข้อมูลได้หลายชนิด
+โดยจพทำงานผ่านระบบ HTTP protocol
+
+API: Application Programming Interface 
+ช่องทางหนึ่งที่เอาไว้เชื่อมต่อกับเว็บไซต์ผู้ให้บริการ API จากที่อื่น 
+เพื่อเป็นตัวกลางที่ทำให้โปรแกรมเชื่อมต่อกับโปรแกรมอื่นได้
+
+HTTP method สำหรับทำงานใน HTTP protocol
+- GET เป็น method สำหรับร้องขอข้อมูลจาก resource และจำไม่มี side effect . 
+เช่น /companies/34/employees 
+จะตอบสนองเป็นรายการ employee ของ company 34
+- POST เป็น method สำหรับสร้างข้อมูลใหม่ใน resource ซึ่งจะส่งข้อมูลใน body. 
+เช่น /companies/34/employees 
+จะสร้าง employee ใหม่ของ company 34 โดยที่ POST เป็น non-idempotent หมายความว่าหลายๆ request จะมีผลที่แตกต่างกัน
+- PUT เป็น method สำหรับอัพเดตข้อมูลของข้อมูลที่มีอยู่แล้วใน resource หรือสร้างใหม่ 
+เช่น /companies/34/employees/john 
+จะอัพเดตหรือสร้างข้อมูลของ john ใน resource employees ของ company 34 โดยที่ PUT เป็น idempotent หมายความว่าหลายๆ request จะมีผลเดียว
+- DELETE เป็น method สำหรับลบข้อมูลที่มีอยู่ใน resource 
+เช่น /companies/ 34/employees/john 
+จะลบข้อมูล john ใน resource employees ของ company 34
+
+URL: Universal Resource Locator ที่อยู่เว็บแบบสมบูรณ์ที่ใช้ค้นหาหน้าเว็บที่เฉพาะเจาะจง
+ซึ่งประกอบด้วย ชื่อ domain เช่น google.com (.com เป็นนามสกุลโดเมน)
+และ HTTP,HTTPS
+
+path: เส้นทางที่เป็นการต่อเชื่อมโยงระหว่าง node สองแห่ง
+
+Query parameter ==> คือการระบุค่าเฉพาะเจาะจงในการให้เว็บแสดงผล
+เชน https://example.com/articles?sort=ASC&page=2
+หลังเครื่องหมาย ? คือ Query parameter โดยในตัวอย่างจะมี parameter สองตัว
+คือ sort โดยเรียงน้อยไปมากและ page อยู่ที่หน้าสอง
+
+
+postman ==> ใช้ในการเชื่อเว็บไซต์ในการส่งข้อมูล
+เช่น มีหน้าเว็บที่ใช้งานปกติกับหน้าเว็บไว้เก็บข้อมูล
+หน้าเว็บปกติต้องการข้อมูล ใช้ postman ขอ request ไปเรียกว่า Request
+และทางเว็บที่เก็บข้อมูลก็จะส่งข้อมูลกกลับมาผ่าน postman เรียกว่า Response
